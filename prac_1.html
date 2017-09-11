@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.special {
+	color:blue;
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+$(function(){
+    $(".btn_class").click(function(){
+        var divID = $(this).attr('data-id');
+		$("#"+divID).toggle();
+    });
+});
+//Whats happening here is that for all the 3 input buttons we have given the same class name because the class name can be the same(just not the id)..the class name for all 3 input buttons is 'btn_class'..so when any of the 3 buttons is clicked, divId stores the data-id attr. of the button that has been clicked cos of the 'this' used..and the value of data-id of buttons is same as the normal div id (same name used- one,two,three)..so then the div is toggled
+
+$(function(){
+    /*$("li").click(function(){
+		$(this).next().remove();
+		$(this).removeClass('special');
+		$(this).siblings().addClass('special');*/
+	
+	//$(".sublist").click(function(){
+		//$(this).find('li').filter(':first').addClass('special');
+		//$(this).find('.special').remove();
+    //});
+	
+	$("li").click(function(){
+		$(this).hide();
+		if( $(this).is('.special') )             //in place of is, not can also be used
+		{	
+			alert('special');
+		}
+		});
+	});
+
+</script>
+</head>
+<body>
+
+<div id="one" class="special" style="border:1px solid black">This should disappear</div>
+<div id="two" style="border:1px solid black">This too should disappear</div>
+<div id="three" style="border:1px solid black">This three should disappear</div>
+<input data-id="one" class="btn_class" type="button" value="Submit1!">
+<input data-id="two" class="btn_class" type="button" value="Submit2!">
+<input data-id="three" class="btn_class" type="button" value="Submit3!">
+<br/>
+<br/>
+<br/>
+<ul class="list">
+	<li>one</li>
+	<li class="special">two</li>
+	<li>three</li>
+	<li>
+		<ul class="sublist">
+			<li>1</li>
+			<li class="special">2</li>
+			<li>3</li>
+		</ul>
+	</li>
+</ul>
+<!--
+$(this).hide() - hides the current element.
+$("p").hide() - hides all <p> elements.
+$(".test").hide() - hides all elements with class="test".
+$("#test").hide() - hides the element with id="test". 
+
+
+
+$(function(){
+    $(".btn_two_class").click(function(){
+        $("#one").hide();
+    });
+});
+$(function(){
+    $("#btn_one").click(function(){
+        $("#one").slideToggle(2000);
+    });
+});
+$(function(){
+    $(".btn_three_class").click(function(){
+        $("#one").html('txt changed');
+    });
+});
+</script>
+</head>
+<body>
+<div id="one" style="border:1px solid black">This should disappear</div>
+<input id="btn_one" type="button" value="Submit1!">
+<input id="btn_two" class="btn_two_class" type="button" value="Submit2!">
+<input id="btn_three" class="btn_three_class" type="button" value="Submit3!">
+-->
+
+</body>
+</html>
